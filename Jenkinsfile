@@ -6,5 +6,10 @@ pipeline {
         sh 'echo "hoge"'
       }
     }
+    stage('huga') {
+      steps {
+        sh 'echo "huga"'
+      }
+    }
   }
 }

@@ -1,5 +1,10 @@
 pipeline {
-  agent any
+  agent {
+    node {
+      label 'Build Server'
+    }
+
+  }
   stages {
     stage('hoge') {
       steps {

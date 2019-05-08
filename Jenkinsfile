@@ -16,5 +16,10 @@ pipeline {
         sh 'echo "huga"'
       }
     }
+    stage('echo hostname') {
+      steps {
+        sh 'hostname'
+      }
+    }
   }
 }

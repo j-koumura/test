@@ -1,10 +1,5 @@
 pipeline {
-  agent {
-    node {
-      label 'Build Server'
-    }
-
-  }
+  agent any
   stages {
     stage('hoge') {
       steps {
@@ -20,6 +15,11 @@ pipeline {
       steps {
         sh 'hostname'
       }
+    }
+  }
+  post {
+    always {
+      sh 'echo "DONE"'
     }
   }
 }

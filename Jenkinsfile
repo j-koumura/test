@@ -11,6 +11,11 @@ pipeline {
         sh 'echo "huga"'
       }
     }
+    stage('fail test') {
+      steps {
+        sh 'hogehoge'
+      }
+    }
     stage('echo hostname') {
       steps {
         sh 'hostname'

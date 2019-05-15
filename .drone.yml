@@ -1,5 +1,6 @@
+---
 kind: pipeline
-name: default
+name: on_push
 
 steps:
   - name: test
@@ -7,6 +8,7 @@ steps:
     environment:
       HOGE: 'hello drone'
     commands:
+      - echo "ON PUSH"
       - apk add --update build-base
       - echo $HOGE
       - cat ./HelloWorld.txt
@@ -16,8 +18,21 @@ steps:
     settings:
       webhook:
         from_secret: webhook_url
+
 trigger:
-  branch:
-    - master
   event:
     - push
+
+---
+kind: pipeline
+name: on_pull_request
+
+steps:
+  - name: test
+    image: alpine:3.9.4
+    commands:
+      - echo "ON PULL REQUEST"
+
+trigger:
+  event:
+    - pull_request

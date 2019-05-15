@@ -25,6 +25,20 @@ trigger:
 
 ---
 kind: pipeline
+name: on_push_2
+
+steps:
+  - name: test
+    image: alpine:3.9.4
+    commands:
+      - echo "ON PUSH 2"
+
+trigger:
+  event:
+    - push
+
+---
+kind: pipeline
 name: on_pull_request
 
 steps:

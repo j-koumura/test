@@ -5,34 +5,22 @@ name: on_push
 steps:
   - name: test
     image: alpine:3.9.4
+    detach: true
     environment:
       HOGE: 'hello drone'
     commands:
+      - sleep 10
       - echo "ON PUSH"
       - apk add --update build-base
       - echo $HOGE
       - cat ./hello_world.txt
 
-  - name: notify-slack
-    image: plugins/slack
-    settings:
-      webhook:
-        from_secret: webhook_url
+  - name: test2
+    image: alpine:3.9.4
+    commands:
+      - sleep 10
+      - echo "ON PUSH 2"
 
 trigger:
   event:
     - push
-
----
-kind: pipeline
-name: on_pull_request
-
-steps:
-  - name: test
-    image: alpine:3.9.4
-    commands:
-      - echo "ON PULL REQUEST"
-
-trigger:
-  event:
-    - pull_request

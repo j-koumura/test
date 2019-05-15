@@ -7,13 +7,14 @@ steps:
     image: alpine:3.9.4
     detach: true
     commands:
-    - sleep 3
-    - aaaaf
+    - echo "YEE"
 
   - name: test2
     image: alpine:3.9.4
     commands:
-    - sleep 12
+    - sleep 3
+    - ping -c 5 datached
+    - ping -c 5 test2
 
 trigger:
   event:

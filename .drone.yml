@@ -11,7 +11,7 @@ steps:
       - echo "ON PUSH"
       - apk add --update build-base
       - echo $HOGE
-      - cat ./HelloWorld.txt
+      - cat ./hello_world.txt
 
   - name: notify-slack
     image: plugins/slack

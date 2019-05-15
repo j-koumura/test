@@ -3,23 +3,17 @@ kind: pipeline
 name: on_push
 
 steps:
-  - name: test
+  - name: detached
     image: alpine:3.9.4
     detach: true
-    environment:
-      HOGE: 'hello drone'
     commands:
-      - sleep 10
-      - echo "ON PUSH"
-      - apk add --update build-base
-      - echo $HOGE
-      - cat ./hello_world.txt
+    - sleep 3
+    - aaaaf
 
   - name: test2
     image: alpine:3.9.4
     commands:
-      - sleep 10
-      - echo "ON PUSH 2"
+    - sleep 12
 
 trigger:
   event:

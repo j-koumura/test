@@ -3,39 +3,8 @@ kind: pipeline
 name: on_push
 
 steps:
-  - name: test
-    image: alpine:3.9.4
-    environment:
-      HOGEKEY:
-        from_secret: hogekey
-      ALLOWPRKEY:
-        from_secret: test_allowpr_key
-    commands:
-      - echo $HOGEKEY
-      - echo $ALLOWPRKEY
-      - echo $HOGEKEY > /tmp/key
-      - cat /tmp/key
-
-  - name: notify-slack
-    image: plugins/slack
-    settings:
-      webhook:
-        from_secret: webhook_url
-
-trigger:
-  event:
-    - push
-
----
-kind: pipeline
-name: on_pull_request
-
-steps:
-  - name: test
-    image: alpine:3.9.4
-    commands:
-      - echo "ON PULL REQUEST"
-
-trigger:
-  event:
-    - pull_request
+- name: BASH TSUKAWASERO
+  image: google/cloud-sdk
+  commands:
+  - bash
+  - echo $SHELL

@@ -7,4 +7,4 @@ steps:
   image: google/cloud-sdk
   commands:
   - bash
-  - echo $SHELL
+  - echo <(cat /root/.bashrc)

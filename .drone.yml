@@ -1,10 +1,27 @@
 ---
 kind: pipeline
-name: on_push
+name: On master
+
+trigger:
+  event: [push]
+  branch: [master]
 
 steps:
-- name: BASH TSUKAWASERO
-  image: google/cloud-sdk
+- name: test
+  image: alpine
   commands:
-  - bash
-  - echo <(cat /root/.bashrc)
+  - echo aaaa
+
+---
+kind: pipeline
+name: On branch
+
+trigger:
+  event: [push]
+  branch: [hoge-*]
+
+steps:
+- name: test
+  image: alpine
+  commands:
+  - echo ${DRONE_BRANCH}

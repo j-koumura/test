@@ -9,8 +9,11 @@ trigger:
 steps:
 - name: test
   image: alpine
+  environment:
+  - HOGE=huga
   commands:
   - echo aaaa
+  - echo $HOGE
 
 ---
 kind: pipeline

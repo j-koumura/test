@@ -5,5 +5,7 @@ name: default
 steps:
 - name: print DRONE_COMMIT_BEFORE
   image: alpine
+  environment:
+    SHORT_SHA: "${DRONE_COMMIT_SHA:0:8}"
   commands:
-  - echo ${DRONE_COMMIT_BEFORE}
+  - echo $SHORT_SHA

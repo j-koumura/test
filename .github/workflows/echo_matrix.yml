@@ -1,0 +1,14 @@
+name: Echo Matrix
+
+on: [push]
+
+jobs:
+  echo_matrix:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        hair: [銀髪, 青髪, 金髪, 茶髪]
+    steps:
+    - uses: actions/checkout@v1
+    - name: Echo girl
+      run: echo ${{ matrix.hair }}美少女
